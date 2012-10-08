@@ -693,6 +693,13 @@ _V_.Player = _V_.Component.extend({
     this.triggerEvent("exitFullWindow");
   },
 
+  bucketTechs: function(sources){
+    return _V_.reduce(sources, function(init, val, i){
+      (init[val.type] = init[val.type] || {})[val.res || _V_.objKeys(init[val.type]).length] = val;
+      return init;
+    }, {});
+  },
+
   selectSource: function(sources){
 
     // Loop through each playback technology in the options order

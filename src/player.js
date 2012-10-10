@@ -147,7 +147,9 @@ _V_.Player = _V_.Component.extend({
             src: c[getAttribute]('src'),
             type: c[getAttribute]('type'),
             media: c[getAttribute]('media'),
-            title: c[getAttribute]('title')
+            title: c[getAttribute]('title'),
+            // yes, 'res' is non-HTML5 standard
+            res: c[getAttribute]('res')
           });
         }
         if (c.nodeName == "TRACK") {

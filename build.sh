@@ -28,6 +28,8 @@ cat src/controls.js >> dist/video.js
 
 cat src/tracks.js >> dist/video.js
 
+cat src/resolutions.js >> dist/video.js
+
 # h5swf temporarily requires swfobject
 # cat flash/swfobject.js >> dist/video.js
 

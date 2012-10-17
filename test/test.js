@@ -14,7 +14,7 @@ function createVideoTag(id){
   tagCode+= '</video>';
 
   tag = document.createElement("video");
-  
+
   tag.id = "vid1";
   tag.controls = true;
   tag.className = "video-js vjs-default-skin";
@@ -161,7 +161,7 @@ test("currentTime()", 1, function() {
     }));
 
   }));
-  
+
   this.player.play();
 });
 
@@ -171,17 +171,17 @@ test("currentTime(seconds)", 2, function() {
 
   // var afterPlayback = _V_.proxy(this, function(){
   //   this.player.currentTime(this.player.duration() / 2);
-  // 
+  //
   //   this.player.addEvent("timeupdate", _V_.proxy(this, function(){
   //     ok(this.player.currentTime() > 0, "Time is greater than 0.");
-  //     
+  //
   //     this.player.pause();
-  //     
+  //
   //     this.player.addEvent("timeupdate", _V_.proxy(this, function(){
   //       ok(this.player.currentTime() == 0, "Time is 0.");
   //       start();
   //     }));
-  // 
+  //
   //     this.player.currentTime(0);
   //   }));
   // });
@@ -193,14 +193,14 @@ test("currentTime(seconds)", 2, function() {
     this.player.currentTime(this.player.duration() - 1);
 
   }));
-  
+
   this.player.one("seeked", _V_.proxy(this, function(){
 
     _V_.log("seeked", this.player.currentTime())
     ok(this.player.currentTime() > 1, "Time is greater than 1.");
 
     this.player.one("seeked", _V_.proxy(this, function(){
-      
+
       _V_.log("seeked2", this.player.currentTime())
 
       ok(this.player.currentTime() <= 1, "Time is less than 1.");
@@ -216,25 +216,25 @@ test("currentTime(seconds)", 2, function() {
   this.player.play();
 
   // this.player.one("timeupdate", _V_.proxy(this, function(){
-  // 
+  //
   //   this.player.currentTime(this.player.duration() / 2);
-  // 
+  //
   //   this.player.one("timeupdate", _V_.proxy(this, function(){
   //     ok(this.player.currentTime() > 0, "Time is greater than 0.");
-  // 
+  //
   //     this.player.pause();
   //     this.player.currentTime(0);
-  // 
+  //
   //     this.player.one("timeupdate", _V_.proxy(this, function(){
-  // 
+  //
   //       ok(this.player.currentTime() == 0, "Time is 0.");
   //       start();
-  // 
+  //
   //     }));
-  // 
+  //
   //   }));
-  // 
-  // 
+  //
+  //
   // }));
 
 });
@@ -275,7 +275,7 @@ test("Initial Events", 12, function() {
   // Add an event listener for each event type.
   for (var i=0, l=events.length; i<l; i++) {
     var evt = events[i];
-    
+
     // Bind player and event name to function so event name value doesn't get overwritten.
     this.player.one(evt, _V_.proxy({ player: this.player, evt: evt }, function(){
       ok(true, this.evt);
@@ -283,7 +283,7 @@ test("Initial Events", 12, function() {
       // Once we reach canplaythrough, pause the video and wait for 'paused'.
       if (this.evt == "loadedalldata") {
         this.player.pause();
-      
+
       // After we've paused, go to the end of the video and wait for 'ended'.
       } else if (this.evt == "pause") {
         this.player.currentTime(this.player.duration() - 1);

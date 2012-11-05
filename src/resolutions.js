@@ -5,7 +5,7 @@ _V_.merge(_V_.Player.prototype, {
   // fired when a stream is chosen from the resolution menu
   changeResolution: function(new_source){
     var success = this.proxy(function(){
-      this.trigger("resolutionchange");
+      this.triggerEvent("resolutionchange");
     });
 
     // has the exact same source been chosen?
@@ -23,8 +23,10 @@ _V_.merge(_V_.Player.prototype, {
     // the events we want)
     this.loadTech(this.techName, {src: new_source.src});
 
+    var seekEvent = _V_.isIE() ? "durationchange" : "loadeddata";
+
     // fired *after* ready - when the video is ready to seek
-    this.one("loadeddata", _V_.proxy(this, function(){
+    this.one(seekEvent, _V_.proxy(this, function(){
       // seek to the remembered position in the last stream
       this.currentTime(curTime);
 
@@ -60,7 +62,7 @@ _V_.ResolutionMenuItem = _V_.MenuItem.extend({
     this.player.one("loadstart", _V_.proxy(this, this.update));
 
     // set selection on successfull change
-    this.player.on("resolutionchange", _V_.proxy(this, this.update));
+    this.player.addEvent("resolutionchange", _V_.proxy(this, this.update));
   },
 
   onClick: function(){

@@ -23,12 +23,14 @@ _V_.merge(_V_.Player.prototype, {
     // the events we want)
     this.loadTech(this.techName, {src: new_source.src});
 
-    var seekEvent = _V_.isIE() ? "durationchange" : "loadeddata";
+    var seekEvent = _V_.isIE() ? "progress" : "loadeddata";
 
     // fired *after* ready - when the video is ready to seek
     this.one(seekEvent, _V_.proxy(this, function(){
       // seek to the remembered position in the last stream
-      this.currentTime(curTime);
+      setTimeout(_V_.proxy(this, function(){
+        this.currentTime(curTime);
+      }, 1)); // gotta let the thread settle down
 
       success();
     }));

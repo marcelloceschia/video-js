@@ -23,6 +23,8 @@ _V_.merge(_V_.Player.prototype, {
     // the events we want)
     this.loadTech(this.techName, {src: new_source.src});
 
+    // subtle differences in event timing across browsers make this
+    // combo the most reliable I've found
     var seekEvent = _V_.isIE() ? "progress" : "loadeddata";
 
     // fired *after* ready - when the video is ready to seek

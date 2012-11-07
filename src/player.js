@@ -422,9 +422,9 @@ _V_.Player = _V_.Component.extend({
 
   // Method for calling methods on the current playback technology
   // techCall: function(method, arg){
-  // 
+  //
   //   // if (this.isReady) {
-  //   //   
+  //   //
   //   // } else {
   //   //   _V_.log("The playback technology API is not ready yet. Use player.ready(myFunction)."+" ["+method+"]", arguments.callee.caller.arguments.callee.caller.arguments.callee.caller)
   //   //   return false;
@@ -443,7 +443,7 @@ _V_.Player = _V_.Component.extend({
     this.techCall("pause");
     return this;
   },
-  
+
   // http://dev.w3.org/html5/spec/video.html#dom-media-paused
   // The initial state of paused should be true (in Safari it's actually false)
   paused: function(){

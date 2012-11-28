@@ -460,6 +460,12 @@ _V_.flash = _V_.PlaybackTech.extend({
 
   play: function(){ this.el.vjs_play(); },
   pause: function(){ this.el.vjs_pause(); },
+  // stops the download of the existing video
+  // NOTE: see http://stackoverflow.com/questions/4071872/html5-video-force-abort-of-buffering
+  abort: function(){
+    this.src("");
+    this.play();
+  },
   src: function(src){
     // Make sure source URL is abosolute.
     src = _V_.getAbsoluteURL(src);

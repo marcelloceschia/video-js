@@ -19,16 +19,15 @@ _V_.merge(_V_.Player.prototype, {
     // remember our position in the current stream
     var curTime = this.currentTime();
 
+    // stops the download of the existing video
+    this.abort();
+
     // reload the new tech and the new source (mostly used to re-fire
     // the events we want)
     this.loadTech(this.techName, {src: new_source.src});
 
-    // subtle differences in event timing across browsers make this
-    // combo the most reliable I've found
-    var seekEvent = _V_.isIE() ? "progress" : "loadeddata";
-
     // fired *after* ready - when the video is ready to seek
-    this.one(seekEvent, _V_.proxy(this, function(){
+    this.one("loadeddata", _V_.proxy(this, function(){
       // seek to the remembered position in the last stream
       setTimeout(_V_.proxy(this, function(){
         this.currentTime(curTime);

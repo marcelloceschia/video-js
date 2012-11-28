@@ -450,6 +450,11 @@ _V_.Player = _V_.Component.extend({
     return (this.techGet("paused") === false) ? false : true;
   },
 
+  abort: function(){
+    this.techCall("abort");
+    return this;
+  },
+
   // http://dev.w3.org/html5/spec/video.html#dom-media-currenttime
   currentTime: function(seconds){
     if (seconds !== undefined) {

@@ -23,6 +23,9 @@ _V_.merge(_V_.Player.prototype, {
     // the events we want)
     this.loadTech(this.techName, {src: new_source.src});
 
+    // stop the video from downloading further
+    this.abort();
+
     // fired *after* ready - when the video is ready to seek
     this.one("loadeddata", _V_.proxy(this, function(){
       // seek to the remembered position in the last stream

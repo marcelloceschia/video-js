@@ -458,6 +458,13 @@ _V_.Player = _V_.Component.extend({
     return (this.techGet("paused") === false) ? false : true;
   },
 
+  // stops the downloading of the video
+  // NOTE: you will have to rel-load the tech to play again
+  abort: function(){
+    this.techCall("abort");
+    return this;
+  },
+
   // http://dev.w3.org/html5/spec/video.html#dom-media-currenttime
   currentTime: function(seconds){
     if (seconds !== undefined) {

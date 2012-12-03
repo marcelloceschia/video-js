@@ -113,6 +113,12 @@ _V_.html5 = _V_.PlaybackTech.extend({
   play: function(){ this.el.play(); },
   pause: function(){ this.el.pause(); },
   paused: function(){ return this.el.paused; },
+  // stops the downloading of the video and generally confuses the player
+  // NOTE: see http://stackoverflow.com/questions/4071872/html5-video-force-abort-of-buffering
+  abort: function(){
+    try{ this.src(""); } catch(e){ }
+    this.play();
+  },
 
   currentTime: function(){ return this.el.currentTime; },
   setCurrentTime: function(seconds){

@@ -210,6 +210,9 @@ _V_.flash = _V_.PlaybackTech.extend({
 
   play: function(){ this.el.vjs_play(); },
   pause: function(){ this.el.vjs_pause(); },
+  // FIXME: proper abort method for flash
+  abort: function(){ return this; },
+
   src: function(src){
     // Make sure source URL is abosolute.
     src = _V_.getAbsoluteURL(src);
